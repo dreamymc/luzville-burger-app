@@ -1,0 +1,28 @@
+{
+  "project": "luzville-burger-app",
+  "genre": "playful",
+  "macrostructures": {
+    "customer": "Catalogue",
+    "owner": "Workbench"
+  },
+  "theme": "custom",
+  "vibe": "sun-drenched market stall, warm amber, hand-lettered energy",
+  "fonts": {
+    "display": "Syne",
+    "body": "Plus Jakarta Sans",
+    "outlier": "DM Mono"
+  },
+  "palette": {
+    "paper": "oklch(97% 0.018 85)",
+    "accent": "oklch(68% 0.17 55)",
+    "accent-2": "oklch(52% 0.19 30)"
+  },
+  "audits": [
+    {
+      "timestamp": "2026-05-28T07:15:00Z",
+      "checked_gates": [5, 13, 36, 56, 57, 58, 59, 62, 63],
+      "status": "PASS",
+      "critique": "Typography matches Syne + Plus Jakarta Sans + DM Mono. Standard colors fully integrated. 8-state interactive elements designed in globals.css. No layout jank or fake frames used."
+    }
+  ]
+}

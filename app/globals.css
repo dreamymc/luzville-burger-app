@@ -1,0 +1,543 @@
+/* Hallmark · genre: playful · macrostructure: Catalogue · theme: custom
+ * vibe: "sun-drenched market stall, warm amber, hand-lettered energy"
+ * paper: oklch(97% 0.018 85) · accent: oklch(68% 0.17 55) warm-amber
+ * display: Syne 800 · body: Plus Jakarta Sans 400/600 · outlier: DM Mono 400
+ * nav: N7 Brutal slab · footer: Ft8 Marquee scroll
+ * pre-emit critique: P5 H4 E5 S5 R4 V5
+ */
+
+/* ─── Google Fonts ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+/* ─── Design Tokens ─────────────────────────────────────────────── */
+@import "../tokens.css";
+
+@import "tailwindcss";
+
+/* ─── Tailwind v4 Theme ─────────────────────────────────────────── */
+@theme inline {
+  /* Fonts */
+  --font-display:  'Syne', ui-sans-serif, system-ui, sans-serif;
+  --font-body:     'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-outlier:  'DM Mono', ui-monospace, monospace;
+
+  /* Colors mapped from tokens */
+  --color-paper:       oklch(97% 0.018 85);
+  --color-paper-2:     oklch(93% 0.025 75);
+  --color-paper-3:     oklch(89% 0.030 70);
+  --color-ink:         oklch(18% 0.020 60);
+  --color-ink-2:       oklch(38% 0.018 65);
+  --color-ink-3:       oklch(58% 0.015 70);
+  --color-accent:      oklch(68% 0.170 55);
+  --color-accent-2:    oklch(52% 0.190 30);
+  --color-open:        oklch(58% 0.160 145);
+  --color-closed:      oklch(52% 0.190 30);
+  --color-border:      oklch(84% 0.030 75);
+  --color-focus:       oklch(65% 0.180 55);
+
+  /* Spacing */
+  --spacing-1:  0.25rem;
+  --spacing-2:  0.50rem;
+  --spacing-3:  0.75rem;
+  --spacing-4:  1.00rem;
+  --spacing-5:  1.25rem;
+  --spacing-6:  1.50rem;
+  --spacing-8:  2.00rem;
+  --spacing-10: 2.50rem;
+  --spacing-12: 3.00rem;
+  --spacing-16: 4.00rem;
+  --spacing-20: 5.00rem;
+  --spacing-24: 6.00rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+/* ─── Global Resets ─────────────────────────────────────────────── */
+html,
+body {
+  overflow-x: clip; /* Hallmark gate 62 — never hidden */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1.1;
+  overflow-wrap: anywhere; /* Hallmark gate 63 */
+  min-width: 0;
+}
+
+/* ─── Badge System ──────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.badge--available {
+  background-color: var(--color-available-bg);
+  color: var(--color-available);
+}
+
+.badge--limited {
+  background-color: var(--color-limited-bg);
+  color: var(--color-limited);
+  animation: badge-pulse 3s ease-in-out infinite;
+}
+
+.badge--sold-out {
+  background-color: var(--color-sold-out-bg);
+  color: var(--color-sold-out);
+}
+
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.65; }
+}
+
+/* ─── Card System ───────────────────────────────────────────────── */
+.card {
+  background-color: var(--color-paper-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* ─── Button Base ───────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-instant) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    opacity var(--dur-fast) var(--ease-out);
+  white-space: nowrap;
+  min-width: 0; /* Hallmark gate 59 */
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.btn:active,
+.btn.is-active {
+  transform: translateY(1px);
+}
+
+.btn:disabled,
+.btn.is-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Primary (amber) */
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-paper);
+  box-shadow: var(--shadow-button);
+}
+
+.btn-primary:hover,
+.btn-primary.is-hover {
+  background-color: var(--color-accent-hover);
+}
+
+/* Danger (red) */
+.btn-danger {
+  background-color: var(--color-accent-2);
+  color: var(--color-paper);
+}
+
+.btn-danger:hover,
+.btn-danger.is-hover {
+  background-color: var(--color-accent-2-hover);
+}
+
+/* Ghost */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-ink-2);
+  border: 1px solid var(--color-border);
+}
+
+.btn-ghost:hover,
+.btn-ghost.is-hover {
+  background-color: var(--color-paper-3);
+  color: var(--color-ink);
+}
+
+/* ─── Form Inputs ───────────────────────────────────────────────── */
+.input {
+  width: 100%;
+  padding: 0.65rem 0.875rem;
+  background-color: var(--color-paper);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-ink);
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px oklch(68% 0.170 55 / 0.15);
+}
+
+.input::placeholder {
+  color: var(--color-ink-3);
+}
+
+.label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-ink-2);
+  margin-bottom: 0.375rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* ─── Staggered Card Reveal ─────────────────────────────────────── */
+.card-reveal {
+  animation: card-in var(--dur-reveal) var(--ease-out) both;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Reduced Motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 150ms !important;
+    transition-duration: 150ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* ─── Marquee Footer ────────────────────────────────────────────── */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ─── Shop Status Badge ─────────────────────────────────────────── */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.875rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition:
+    background-color var(--dur-slow) var(--ease-in-out),
+    color var(--dur-slow) var(--ease-in-out);
+}
+
+.status-badge--open {
+  background-color: var(--color-open-bg);
+  color: var(--color-open);
+}
+
+.status-badge--closed {
+  background-color: var(--color-closed-bg);
+  color: var(--color-closed);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.status-dot--open {
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+
+/* ─── Toggle Switch ─────────────────────────────────────────────── */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 1.625rem;
+  cursor: pointer;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-track {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-border-2);
+  transition: background-color var(--dur-base) var(--ease-in-out);
+}
+
+.toggle input:checked + .toggle-track {
+  background-color: var(--color-open);
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px oklch(0% 0 0 / 0.2);
+  transition: transform var(--dur-base) var(--ease-in-out);
+}
+
+.toggle input:checked ~ .toggle-thumb {
+  transform: translateX(1.375rem);
+}
+
+.toggle:focus-within .toggle-track {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ─── Modal ─────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: oklch(10% 0.01 60 / 0.55);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 50;
+  padding: 0;
+  animation: overlay-in var(--dur-base) var(--ease-out);
+}
+
+@media (min-width: 640px) {
+  .modal-overlay {
+    align-items: center;
+    padding: 1rem;
+  }
+}
+
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal-panel {
+  background-color: var(--color-paper);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  box-shadow: var(--shadow-modal);
+  width: 100%;
+  max-height: 90dvh;
+  overflow-y: auto;
+  animation: panel-in var(--dur-slow) var(--ease-out);
+}
+
+@media (min-width: 640px) {
+  .modal-panel {
+    border-radius: var(--radius-xl);
+    max-width: 28rem;
+    max-height: 85dvh;
+  }
+}
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Loading Spinner ───────────────────────────────────────────── */
+.spinner {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid oklch(68% 0.170 55 / 0.25);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Owner Dashboard Light Surface ──────────────────────────────── */
+.owner-surface {
+  background-color: var(--color-paper-dark);
+  color: var(--color-ink-inverse);
+  min-height: 100dvh;
+}
+
+.owner-sidebar {
+  background-color: var(--color-paper-dark-2);
+  border-right: 1px solid var(--color-border);
+}
+
+.owner-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-ink-2);
+  text-decoration: none;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.owner-nav-link:hover {
+  background-color: var(--color-paper-3);
+  color: var(--color-ink);
+}
+
+.owner-nav-link.active {
+  background-color: oklch(68% 0.170 55 / 0.15); /* amber highlight tint */
+  color: var(--color-accent);
+}
+
+.owner-card {
+  background-color: var(--color-paper-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+/* ─── Quick Count Button (Siomai) ───────────────────────────────── */
+.count-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-2);
+  background-color: var(--color-paper-2);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-instant) var(--ease-out);
+}
+
+.count-btn:hover {
+  background-color: var(--color-paper-3);
+}
+
+.count-btn:active {
+  transform: scale(0.93);
+}
+
+.count-btn:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.count-btn--plus10 {
+  background-color: oklch(93% 0.050 145);
+  border-color: oklch(78% 0.090 145);
+  color: var(--color-open);
+}
+
+.count-btn--plus10:hover {
+  background-color: oklch(88% 0.070 145);
+}
+
+.count-btn--minus {
+  background-color: oklch(95% 0.025 30);
+  border-color: oklch(82% 0.050 30);
+  color: var(--color-accent-2);
+}
+
+.count-btn--minus:hover {
+  background-color: oklch(90% 0.040 30);
+}

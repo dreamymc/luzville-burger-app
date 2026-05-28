@@ -1,0 +1,114 @@
+/* Hallmark · genre: playful · macrostructure: Catalogue · theme: custom
+ * vibe: "sun-drenched market stall, warm amber, hand-lettered energy"
+ * paper: oklch(97% 0.018 85) · accent: oklch(68% 0.17 55) warm-amber
+ * display: Syne 800 · body: Plus Jakarta Sans 400/600 · outlier: DM Mono 400
+ * nav: N7 Brutal slab · footer: Ft8 Marquee scroll
+ * pre-emit critique: P5 H4 E5 S5 R4 V5
+ */
+
+:root {
+  /* ─── Paper / Surfaces ─────────────────────────────────────── */
+  --color-paper:        oklch(97% 0.018 85);   /* warm cream */
+  --color-paper-2:      oklch(93% 0.025 75);   /* toasted parchment — cards */
+  --color-paper-3:      oklch(89% 0.030 70);   /* deeper card hover */
+  --color-paper-dark:   oklch(97% 0.018 85);   /* owner dashboard surface (light cream) */
+  --color-paper-dark-2: oklch(93% 0.025 75);   /* owner sidebar (light toasted parchment) */
+
+  /* ─── Ink / Text ───────────────────────────────────────────── */
+  --color-ink:          oklch(18% 0.020 60);   /* warm near-black */
+  --color-ink-2:        oklch(38% 0.018 65);   /* secondary text */
+  --color-ink-3:        oklch(58% 0.015 70);   /* muted / placeholder */
+  --color-ink-inverse:  oklch(18% 0.020 60);   /* text on light surfaces (now same as ink) */
+
+  /* ─── Brand Accents ────────────────────────────────────────── */
+  --color-accent:       oklch(68% 0.170 55);   /* saffron amber — primary */
+  --color-accent-hover: oklch(62% 0.180 52);   /* deeper on hover */
+  --color-accent-2:     oklch(52% 0.190 30);   /* chili red — danger / closed */
+  --color-accent-2-hover: oklch(46% 0.195 28);
+
+  /* ─── Status ───────────────────────────────────────────────── */
+  --color-open:         oklch(58% 0.160 145);  /* warm forest green — OPEN */
+  --color-open-bg:      oklch(92% 0.055 145);  /* light green tint bg */
+  --color-closed:       oklch(52% 0.190 30);   /* same as accent-2 — CLOSED */
+  --color-closed-bg:    oklch(94% 0.045 30);   /* light red tint bg */
+
+  /* ─── Availability Badges ──────────────────────────────────── */
+  --color-available:    oklch(55% 0.155 145);
+  --color-available-bg: oklch(93% 0.050 145);
+  --color-limited:      oklch(66% 0.155 75);   /* warm yellow */
+  --color-limited-bg:   oklch(95% 0.060 80);
+  --color-sold-out:     oklch(50% 0.080 30);   /* muted red-grey */
+  --color-sold-out-bg:  oklch(93% 0.025 30);
+
+  /* ─── Focus / A11y ─────────────────────────────────────────── */
+  --color-focus:        oklch(65% 0.180 55);   /* amber focus ring */
+  --color-border:       oklch(84% 0.030 75);   /* warm hairline */
+  --color-border-2:     oklch(76% 0.040 70);   /* stronger divider */
+
+  /* ─── Typography ───────────────────────────────────────────── */
+  --font-display:  'Syne', ui-sans-serif, system-ui, sans-serif;
+  --font-body:     'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-outlier:  'DM Mono', ui-monospace, 'Courier New', monospace;
+
+  /* ─── Type Scale (perfect fourth 1.333) ────────────────────── */
+  --text-xs:    0.563rem;   /* 9px  — labels */
+  --text-sm:    0.750rem;   /* 12px — captions */
+  --text-base:  1.000rem;   /* 16px — body */
+  --text-md:    1.125rem;   /* 18px — lead */
+  --text-lg:    1.333rem;   /* ~21px */
+  --text-xl:    1.777rem;   /* ~28px — section heads */
+  --text-2xl:   2.369rem;   /* ~38px — card titles */
+  --text-3xl:   3.157rem;   /* ~51px — hero */
+  --text-4xl:   4.209rem;   /* ~67px — display */
+  --text-display: 5.610rem; /* ~90px — hero marquee */
+
+  /* ─── Spacing (4pt scale) ───────────────────────────────────── */
+  --space-1:   0.25rem;   /* 4px */
+  --space-2:   0.50rem;   /* 8px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1.00rem;   /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.50rem;   /* 24px */
+  --space-8:   2.00rem;   /* 32px */
+  --space-10:  2.50rem;   /* 40px */
+  --space-12:  3.00rem;   /* 48px */
+  --space-16:  4.00rem;   /* 64px */
+  --space-20:  5.00rem;   /* 80px */
+  --space-24:  6.00rem;   /* 96px */
+
+  /* Semantic aliases */
+  --space-xs:   var(--space-2);
+  --space-sm:   var(--space-3);
+  --space-md:   var(--space-6);
+  --space-lg:   var(--space-10);
+  --space-xl:   var(--space-16);
+  --space-2xl:  var(--space-20);
+  --space-3xl:  var(--space-24);
+
+  /* ─── Radii ─────────────────────────────────────────────────── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-pill: 999px;
+
+  /* ─── Shadows ───────────────────────────────────────────────── */
+  --shadow-card:       0 2px 8px -2px oklch(18% 0.020 60 / 0.08),
+                       0 8px 24px -10px oklch(68% 0.170 55 / 0.12);
+  --shadow-card-hover: 0 4px 16px -4px oklch(18% 0.020 60 / 0.12),
+                       0 16px 40px -12px oklch(68% 0.170 55 / 0.20);
+  --shadow-modal:      0 24px 60px -12px oklch(18% 0.020 60 / 0.28);
+  --shadow-button:     0 2px 8px -2px oklch(68% 0.170 55 / 0.30);
+
+  /* ─── Easings ───────────────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ─── Durations ─────────────────────────────────────────────── */
+  --dur-instant:  80ms;
+  --dur-fast:     150ms;
+  --dur-base:     220ms;
+  --dur-slow:     350ms;
+  --dur-reveal:   500ms;
+}
